@@ -1,0 +1,153 @@
+@import 'normalize';
+@import 'veriables';
+@import 'mixins';
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body{
+    font: 300 1.6rem/1.6 $ff;
+    color: $dark;
+}
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.section{
+    padding: 110px 0;
+    text-align: center;
+    &__wrap{
+        padding: 30px 120px;
+        &--border{
+            border: $b-width solid $dark;
+            border-top: 0;
+            padding-top: 0;
+            position: relative;
+            &::before,
+            &::after{
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 25%;
+                border-top: $b-width solid $dark;
+            }
+            &::after{
+                right: -$b-width;
+            }
+            &::before{
+                left: -$b-width;
+            }
+            .section--bg &{
+                border-color: $light;
+                &::before,
+                &::after{
+                    border-color: $light;
+                }
+            }
+        }
+    }
+    &--bg{
+        color: $light;
+        background-color: $brand;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    &__tittle, &__subtittle{
+        text-transform: uppercase;
+    }
+    &__tittle{
+        letter-spacing: 0.16em;
+        .section__wrap--border & {
+            transform: translate(0, -50%);
+            padding: 0 20%;
+        }
+    }
+    &__subtittle{
+        font-weight: 400;
+        font-size: 1.5rem;
+    }
+}
+header{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+h1{
+    font-size: 5.4rem;
+}
+h2{
+    font-size: 3.4rem;
+}
+h3{
+    font-size: 3.4rem; 
+}
+.logo{
+    &--dark{
+        fill: $dark;
+        stroke: $dark;
+    }
+    &--light{
+        fill: $light;
+        stroke: $light;
+    }
+}
+.scroll{
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    fill: $light;
+    @include hover{
+        fill: $dark;
+    }   
+}
+.service{
+    margin: 80px 0;
+        &__tittle{
+        text-transform: uppercase;
+        margin: 30px 0;
+        letter-spacing: 0.16em;
+    }
+    svg {
+        fill: $dark;
+    }
+}
+.btn{
+    text-transform: uppercase;
+    border: $b-width solid $dark;
+    outline: none;
+    background-color: $dark;
+    color: $light;
+    margin: 30px 0;
+    padding: 20px;
+    font-weight: 400;
+    letter-spacing: 0.16;
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+    @include hover{
+        color: $dark;
+        background-color: $light;
+    }
+}
+.copyrigth{
+    margin-top: 110px;
+    font-weight: 400;
+    &__text{
+        vertical-align: middle;
+        
+    }
+    svg{
+        vertical-align: middle;
+    }
+}
