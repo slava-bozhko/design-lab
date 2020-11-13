@@ -23,13 +23,29 @@ body{
 .section{
     padding: 110px 0;
     text-align: center;
+    @include media(768px) {
+        padding: 60px 0;
+    }
+    @include media(576px) {
+        padding: 30px 0;
+    }
     &__wrap{
         padding: 30px 120px;
+        @include media(768px) {
+            padding: 15px 60px;
+        }
+        @include media(576px) {
+            padding: 30px;
+        }
         &--border{
             border: $b-width solid $dark;
             border-top: 0;
             padding-top: 0;
             position: relative;
+            @include media(576px) {
+                border: none;
+                padding: 0;
+                }
             &::before,
             &::after{
                 content: "";
@@ -37,6 +53,9 @@ body{
                 top: 0;
                 width: 25%;
                 border-top: $b-width solid $dark;
+                @include media(576px) {
+                    display: none;
+                }
             }
             &::after{
                 right: -$b-width;
@@ -44,6 +63,9 @@ body{
             &::before{
                 left: -$b-width;
             }
+            
+                
+
             .section--bg &{
                 border-color: $light;
                 &::before,
@@ -56,7 +78,7 @@ body{
     &--bg{
         color: $light;
         background-color: $brand;
-        background-position: center;
+        background-position: right;
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -68,7 +90,11 @@ body{
         .section__wrap--border & {
             transform: translate(0, -50%);
             padding: 0 20%;
-        }
+                @include media(576px) {
+                    padding: 0;
+                    transform: translate(0, 0);
+                }
+            }
     }
     &__subtittle{
         font-weight: 400;
@@ -80,16 +106,34 @@ header{
     display: flex;
     align-items: center;
     position: relative;
+    svg{ 
+        @include media(576px) {
+            height: 51px !important;
+            width: 50px !important;
+        }
+    }
 }
 
 h1{
     font-size: 5.4rem;
+    @include media(768px) {
+        font-size: 4.4rem;
+    }
+    @include media(576px) {
+        font-size: 3.4rem;
+    }
 }
 h2{
     font-size: 3.4rem;
+    @include media(576px) {
+        font-size: 2.4rem;
+    }
 }
 h3{
-    font-size: 3.4rem; 
+    font-size: 2rem; 
+    @include media(576px) {
+        font-size: 1.8rem;
+    }
 }
 .logo{
     &--dark{
@@ -110,9 +154,21 @@ h3{
     @include hover{
         fill: $dark;
     }   
+    @include media(576px) {
+        bottom: 10px;
+    }
+    svg{ 
+        @include media(576px) {
+            height: 17px !important;
+            width: 28px !important;
+        }
+    }
 }
 .service{
     margin: 80px 0;
+    @include media(576px) {
+        margin: 40px;
+    }
         &__tittle{
         text-transform: uppercase;
         margin: 30px 0;
@@ -143,11 +199,72 @@ h3{
 .copyrigth{
     margin-top: 110px;
     font-weight: 400;
+    @include media(576px) {
+        margin-top: 30px;
+    }
     &__text{
         vertical-align: middle;
         
     }
     svg{
         vertical-align: middle;
+    }
+}
+.portfolio{
+    display: grid;
+    grid-template-columns: 30% auto 30% ;
+    grid-template-rows: repeat(2, 230px);
+    grid-gap: 10px;
+
+    @include media(768px) {
+        grid-template-columns: repeat(2, 1fr) ;
+        grid-template-rows: repeat(3, 230px);
+    }
+    @include media(576px) {
+        display: block;
+    }
+    &__item{
+        position: relative;
+        overflow: hidden;
+        @include media(576px) {
+            height: 230px;
+            margin: 10px 0;
+        }
+        @include media(768px) {
+        grid-template-columns: repeat(2, 1fr) ;
+        grid-template-rows: repeat(3, 230px);
+        grid-gap: 10px;
+        }
+        @include hover{
+            .portfolio__img{
+                @include tr;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+    }
+    &__img{
+        @include pCenter;
+        @include tr;
+        min-width: 100%;
+        min-height: 100%;
+        
+    }
+    &__name{
+        position: absolute;
+        left: 15%;
+        bottom: 15%;
+        right: 60px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 3.4rem;
+        letter-spacing: .16em;
+        color: $light;
+
+
+        @include media(1200px) {
+            left: 10%;
+            right: 10%;
+            font-size: 2.4rem;
+        }
     }
 }
